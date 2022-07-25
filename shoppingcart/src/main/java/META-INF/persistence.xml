@@ -8,8 +8,8 @@
 		<class>model.Product</class>
 		<class>model.Banner</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/shoppingcart?serverTimezone=Asia/Taipei"/>
-			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.10.1.74/shoppingcart?serverTimezone=Asia/Taipei"/>
+			<property name="javax.persistence.jdbc.user" value="admin"/>
 			<property name="javax.persistence.jdbc.password" value="1234"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 		</properties>

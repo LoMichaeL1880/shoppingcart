@@ -19,6 +19,8 @@ public class Banner implements Serializable {
 	private String path;
 
 	private String picname;
+	
+	private String hyperlink;
 
 	public Banner() {
 	}
@@ -45,6 +47,14 @@ public class Banner implements Serializable {
 
 	public void setPicname(String picname) {
 		this.picname = picname;
+	}
+
+	public String getHyperlink() {
+		return hyperlink;
+	}
+
+	public void setHyperlink(String hyperlink) {
+		this.hyperlink = hyperlink;
 	}
 
 }

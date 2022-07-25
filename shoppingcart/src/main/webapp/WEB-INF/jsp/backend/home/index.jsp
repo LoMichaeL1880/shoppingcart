@@ -19,8 +19,17 @@
 		</div>
 		
 		<script type="text/javascript">
-			$("#banner").click(function(){
+			$("#bannerlist").click(function(){
 				$.ajax("banner",{
+					type:"GET",
+					dataType:"html",
+					success:function(data,status){
+						$("#mainarea").html(data);
+					}
+				});
+			});
+			$("#bannerinsert").click(function(){
+				$.ajax("insert",{
 					type:"GET",
 					dataType:"html",
 					success:function(data,status){

@@ -63,7 +63,8 @@
         <div id="menu_banner" class="collapse" data-parent="#aside">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" id="banner">Banner列表</li>
+                    <li class="list-group-item" id="bannerlist">Banner列表</li>
+                    <li class="list-group-item" id="bannerinsert">新增Banner</li>
                 </ul>
             </div>
         </div>

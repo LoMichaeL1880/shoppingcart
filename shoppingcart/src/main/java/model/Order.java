@@ -39,7 +39,7 @@ public class Order implements Serializable {
 
 	//bi-directional one-to-one association to Orderdetail
 	@OneToOne
-	@JoinColumn(name="orderid")
+	@JoinColumn(name="orderid", insertable=false, updatable=false)
 	private Orderdetail orderdetail;
 
 	public Order() {
