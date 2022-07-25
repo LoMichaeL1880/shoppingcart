@@ -12,4 +12,9 @@ public class TestService {
 	public String TestHello(ModelMap model) {
 		return "index";
 	}
+	
+	@RequestMapping("/hello2")
+	public String TestHello2(ModelMap model) {
+		return "hello2";
+	}
 }
