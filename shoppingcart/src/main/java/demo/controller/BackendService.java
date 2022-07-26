@@ -23,39 +23,4 @@ public class BackendService {
 	public String backendHomePage(ModelMap model) {
 		return "backend/home/index";
 	}
-	
-	
-	/* ------ Banner ------ */
-	
-	// query banner list
-	@RequestMapping(value="/banner", method=RequestMethod.GET)
-	public String backendBanner(ModelMap model) {
-		List<Banner> list = new daoBanner().queryAll();
-		model.addAttribute("bannerList", list);
-		return "backend/banner/banner";
-	}
-	// insert banner
-	@RequestMapping(value="/insert", method=RequestMethod.GET)
-	public String insertBanner(ModelMap model) {
-		return "backend/banner/bannerinsert";
-	}
-	
-	
-	// update banner by id
-	
-	
-	// delete banner by id
-	@RequestMapping(value = "/remove/{picid}", method=RequestMethod.GET)
-	public String deleteBanner(@PathVariable("picid") String id, ModelMap model) {
-		boolean flag = daoBanner.deleteBanner(id);
-		if(flag) {
-			List<Banner> list = new daoBanner().queryAll();
-			model.addAttribute("bannerList", list);
-		}
-		else {
-			System.out.println("SQL fail");
-		}
-		return "redirect:/backend/home";
-	}
-	
 }
