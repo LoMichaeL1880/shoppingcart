@@ -38,7 +38,7 @@
         <div id="top">
           <div class="container">
             <div class="row">
-              <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Offer of the day</a><a href="#" class="ml-1">Get flat 35% off on orders over $50!</a></div>
+              <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="http://localhost:8080/shoppingcart/backend/home" class="btn btn-success btn-sm">BACKEND</a></div>
               <div class="col-lg-6 text-center text-lg-right">
                 <ul class="menu list-inline mb-0">
                   <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
@@ -236,26 +236,17 @@
                   </ul>
                 </li>
               </ul>
+              <!-- 靠右區塊 -->
               <div class="navbar-buttons d-flex justify-content-end">
-                <!-- /.nav-collapse-->
-                <div id="search-not-mobile" class="navbar-collapse collapse"></div><a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></a>
-                <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span>3 items in cart</span></a></div>
+                
+                
               </div>
+              
             </div>
           </div>
         </nav>
-        <div id="search" class="collapse">
-          <div class="container">
-            <form role="search" class="ml-auto">
-              <div class="input-group">
-                <input type="text" placeholder="Search" class="form-control">
-                <div class="input-group-append">
-                  <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+        
+        
       </header>
   </body>
 </html>

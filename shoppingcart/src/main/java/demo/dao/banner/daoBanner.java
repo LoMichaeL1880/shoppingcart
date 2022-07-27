@@ -20,9 +20,26 @@ public class daoBanner {
 	}
 	
 	// banner : query by id
-//	public Banner queryById(String id) {
-//		
-//	}
+	public Banner queryById(String id) {
+		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
+		String jsql = "SELECT b FROM Banner b where picid =:a";
+		em.getTransaction().begin();
+		Query query = em.createQuery(jsql, Banner.class);
+		query.setParameter("a", id);
+		List<Banner> list = query.getResultList();
+		Banner b = list.get(0);
+		return b;
+	}
+	
+	// banner : insert banner
+	public static void insertBanner(Banner b) {
+		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
+		em.getTransaction().begin();
+		em.persist(b);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	// banner : update status
 	// banner : delete banner by id
 	public static boolean deleteBanner(String id) {

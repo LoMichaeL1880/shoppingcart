@@ -11,18 +11,13 @@
 		<div id="all">
 			<div id="content">
 				<!-- ½ü¼½ -->
-				<div class="container">
-	                <div class="row">
-	                  <div class="col-md-12">
-	                    <div id="main-slider" class="owl-carousel owl-theme">
-	                      <c:forEach var="pic" items="${picList }">
-	                      	<div class="item"><img src="${pic.path }" alt="" class="img-fluid"></div>
-	                      </c:forEach>
-	                    </div>
-	                    <!-- /#main-slider-->
-	                  </div>
-	                </div>
-	              </div>
+				<%@include file="carousel.jsp" %>
+				
+				<!-- Hot this week -->
+				<%@include file="hotproductlist.jsp" %>
+				
+				<!-- ½ü¼½-2 -->
+				<%@include file="carousel-2.jsp" %>
 			</div>
 		</div>
 	

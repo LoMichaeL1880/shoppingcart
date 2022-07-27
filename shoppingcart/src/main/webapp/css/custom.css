@@ -1,14 +1,8 @@
 /* Backend customize css style */
-#aside {
-    background-color: bisque;
-    height: 600px;
-}
-
-#mainarea {
-    background-color: aquamarine;
-    height: 600px;
-}
-
 .small-banner {
-	width: 200px;
+	width: 180px;
+}
+
+.mousehand {
+	cursor:pointer;
 }
