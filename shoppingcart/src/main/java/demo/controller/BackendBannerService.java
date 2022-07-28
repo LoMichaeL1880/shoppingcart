@@ -7,10 +7,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-<<<<<<< HEAD
 import javax.websocket.server.PathParam;
-=======
->>>>>>> branch 'master' of https://github.com/LoMichaeL1880/shoppingcart.git
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -83,44 +80,7 @@ public class BackendBannerService {
 		return "Insert Success";
 	}
 	
-<<<<<<< HEAD
 	/* --- update data ---*/
-=======
-	@RequestMapping(value="/uploadpic",method=RequestMethod.POST,consumes = {"multipart/form-data"})
-	public ModelAndView uploadPic(@RequestParam("file") MultipartFile multipart,HttpSession session) throws Exception{
-		StringBuilder picname = new StringBuilder("../img/");
-		try {
-			ServletContext context = session.getServletContext();
-			String path = context.getRealPath(UPLOAD_DIRECTORY);
-			File tmpFile = new File(path);
-			if (!tmpFile.exists()) {
-				tmpFile.mkdir();
-			}
-			String filename = multipart.getOriginalFilename();
-			System.out.println(path + File.separator + filename);
-			BufferedOutputStream stream = new BufferedOutputStream(
-					new FileOutputStream(new File(path + File.separator + filename)));
-			stream.write(multipart.getBytes());
-			stream.flush();
-			stream.close();
-			picname.append(filename);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println(multipart.getOriginalFilename());
-		return new ModelAndView("backend/banner/picuploadsuccess","picfilename",picname);
-		//return picname;
-	}
-	
-	@RequestMapping(value="/insertOK", method=RequestMethod.POST)
-	@ResponseBody
-	public String insertBannerOK(@RequestBody Banner b ,ModelMap model) {
-		daoBanner.insertBanner(b);
-		return "Insert Success";
-	}
-	
-	
->>>>>>> branch 'master' of https://github.com/LoMichaeL1880/shoppingcart.git
 	// update banner by id
 	@RequestMapping(value="/update/{picid}")
 	public String updateBanner(@PathParam("picid") String id, ModelMap model) {

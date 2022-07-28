@@ -20,11 +20,7 @@ public class daoBanner {
 	}
 	
 	// banner : query by id
-<<<<<<< HEAD
 	public static Banner queryById(String id) {
-=======
-	public Banner queryById(String id) {
->>>>>>> branch 'master' of https://github.com/LoMichaeL1880/shoppingcart.git
 		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
 		String jsql = "SELECT b FROM Banner b where picid =:a";
 		em.getTransaction().begin();
