@@ -46,7 +46,10 @@
         <div class="navbar bg-success navbar-expand-sm navbar-dark">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Shopping Cart Backend</a>
+                  <h3>Backend</h3>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="http://localhost:8080/shoppingcart/shopping/index">Go to Shopping Cart</a>
                 </li>
             </ul>
         </div>

@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=BIG5"
     pageEncoding="BIG5"%>
-<%@ page import="java.time.LocalDateTime" 
-		 import="java.time.format.DateTimeFormatter" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%
-	LocalDateTime d = LocalDateTime.now();
-	DateTimeFormatter f = DateTimeFormatter.ofPattern("yyMMddhhmm");
-	String pid = "p" + d.format(f);
-%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,20 +10,20 @@
 	</head>
 	<body>
 		<div class="container">
-			<h2 align="center">新增輪播 Banner</h2>
+			<h2 align="center">輪播資料修改</h2>
 			<hr>
 			<div class="container">
 				<div class="form-group">
 					<label for="usr">Banner ID :</label>
-					<input type="text" class="form-control" id="picid" name="picid" value="<%=pid %>" disabled>
+					<input type="text" class="form-control" id="picid" name="picid" value="${objBanner.picid }" disabled>
 				</div>
 				<div class="form-group">
 					<label for="usr">Banner 名稱 :</label>
-					<input type="text" class="form-control" id="picname" name="picname">
+					<input type="text" class="form-control" id="picname" name="picname" value="${objBanner.picname }">
 				</div>
 				<div class="form-group">
 					<label for="usr">連結網址(選填) :</label>
-					<input type="text" class="form-control" id="hyperlink" name="hyperlink">
+					<input type="text" class="form-control" id="hyperlink" name="hyperlink" value="${objBanner.hyperlink }">
 				</div>
 				
 				<!-- 上傳圖片 -->
@@ -53,7 +45,7 @@
 					<!-- 圖片預覽 -->
 					<div class="col-md-4">
 						<div style="border:1px solid black">
-							<img class="small-banner" alt="" id="picarea" src="../img/main-slider1.jpg" />
+							<img class="small-banner" alt="" id="picarea" src="${objBanner.path }" />
 							<input type="hidden" id="picpath" value="">
 						</div>
 					</div>
@@ -63,6 +55,7 @@
 				
 				<!-- 資料送出 -->
 				<button class="btn btn-primary" id="send">新增</button>
+				<button class="btn btn-primary" id="back">回上一頁</button>
 				
 			</div>
 		</div>
@@ -98,28 +91,25 @@
 					var obj = new Object();
 					obj.picid = $("#picid").val();
 					obj.picname = $("#picname").val(); 
-					if($("#hyperlink").val()==""){
-						obj.hyperlink = "#";
-					}else{
-						obj.hyperlink = $("#hyperlink").val();
-					}					
+					obj.hyperlink = $("#hyperlink").val();
 					obj.path = $("#picpath").val();
 					
 					var str = JSON.stringify(obj);
 					
 					$.ajax({
 						type:"post",
-						url:"insertOK",
+						url:"updateOK",
 						data:str,
 						contentType:"application/json",
 						success:function(data,status){
 							alert(data);
-							$("#picid").val("");
-							$("#picname").val("");
-							$("#hyperlink").val("");
-							$("#file").val("");
+							$(location).attr("href","http://localhost:8080/shoppingcart/backend/home");
 						}
 					});
+				});
+				
+				$("#back").click(function(){
+					$(location).attr("href","http://localhost:8080/shoppingcart/backend/home");
 				});
 				
 			});

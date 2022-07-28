@@ -26,6 +26,8 @@ public class Product implements Serializable {
 
 	private String pname;
 
+	private String ppicpath;
+
 	private int pprice;
 
 	private String psize;
@@ -87,6 +89,14 @@ public class Product implements Serializable {
 
 	public void setPname(String pname) {
 		this.pname = pname;
+	}
+
+	public String getPpicpath() {
+		return this.ppicpath;
+	}
+
+	public void setPpicpath(String ppicpath) {
+		this.ppicpath = ppicpath;
 	}
 
 	public int getPprice() {
@@ -159,4 +169,10 @@ public class Product implements Serializable {
 		this.category = category;
 	}
 
+	@Override
+	public String toString()
+	{
+		return pid+","+pname+","+pprice+","+psize+","+pcolor+","+pstock+","+pintroduction+","+pspecification+","+pamount;
+		
+	}
 }

@@ -18,8 +18,8 @@
         <div id="menu_account" class="collapse show" data-parent="#aside">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">會員列表</li>
-                    <li class="list-group-item">帳號權限修改</li>
+                    <li class="list-group-item mousehand" id="memberlist">會員列表</li>
+                    <li class="list-group-item mousehand" id="memberupdate">帳號權限修改</li>
                 </ul>
             </div>
         </div>
@@ -33,8 +33,8 @@
         <div id="menu_product" class="collapse" data-parent="#aside">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">單一商品上下架</li>
-                    <li class="list-group-item">商品列表</li>
+                    <li class="list-group-item mousehand" id="addp">單一商品上下架</li>
+                    <li class="list-group-item mousehand" id="productlist">商品列表</li>
                 </ul>
             </div>
         </div>
@@ -48,8 +48,8 @@
         <div id="menu_orders" class="collapse" data-parent="#aside">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">單一訂單查詢</li>
-                    <li class="list-group-item">訂單列表</li>
+                    <li class="list-group-item mousehand" id="order">單一訂單查詢</li>
+                    <li class="list-group-item mousehand" id="orderlist">訂單列表</li>
                 </ul>
             </div>
         </div>
@@ -63,8 +63,8 @@
         <div id="menu_banner" class="collapse" data-parent="#aside">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" id="bannerlist">Banner列表</li>
-                    <li class="list-group-item" id="bannerinsert">新增Banner</li>
+                    <li class="list-group-item mousehand" id="bannerlist">Banner列表</li>
+                    <li class="list-group-item mousehand" id="bannerinsert">新增Banner</li>
                 </ul>
             </div>
         </div>

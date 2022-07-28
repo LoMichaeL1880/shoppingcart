@@ -16,8 +16,16 @@ public class FrontendService {
 
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String FrontendHomePage(ModelMap model) {
+		// carousel
 		List<Banner> list = new daoBanner().queryAll();
 		model.addAttribute("picList", list);
+		
+		// hot product list		
+		//model.addAllAttributes("hotproduct",);
+		
+		// carousel-2
+		//
+		
 		return "frontend/home/index_1";
 	}
 }

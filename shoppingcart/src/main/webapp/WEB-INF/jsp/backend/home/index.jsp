@@ -19,6 +19,7 @@
 		</div>
 		
 		<script type="text/javascript">
+			// banner
 			$("#bannerlist").click(function(){
 				$.ajax("banner",{
 					type:"GET",
@@ -30,6 +31,63 @@
 			});
 			$("#bannerinsert").click(function(){
 				$.ajax("insert",{
+					type:"GET",
+					dataType:"html",
+					success:function(data,status){
+						$("#mainarea").html(data);
+					}
+				});
+			});
+			// products
+			$("#productlist").click(function(){
+				$.ajax("product",{
+					type:"GET",
+					dataType:"html",
+					success:function(data,status){
+						$("#mainarea").html(data);
+					}
+				});
+			});
+			$("#addp").click(function(){
+				$.ajax("addp",{
+					type:"GET",
+					dataType:"html",
+					success:function(data,status){
+						$("#mainarea").html(data);
+					}
+				});
+			});
+			// orders
+			$("#order").click(function(){
+				$.ajax("order",{
+					type:"GET",
+					dataType:"html",
+					success:function(data,status){
+						$("#mainarea").html(data);
+					}
+				});
+			});
+			$("#orderlist").click(function(){
+				$.ajax("orderlist",{
+					type:"GET",
+					dataType:"html",
+					success:function(data,status){
+						$("#mainarea").html(data);
+					}
+				});
+			});
+			// account
+			$("#memberlist").click(function(){
+				$.ajax("member",{
+					type:"GET",
+					dataType:"html",
+					success:function(data,status){
+						$("#mainarea").html(data);
+					}
+				});
+			});
+			$("#memberupdate").click(function(){
+				$.ajax("memberupdate",{
 					type:"GET",
 					dataType:"html",
 					success:function(data,status){
