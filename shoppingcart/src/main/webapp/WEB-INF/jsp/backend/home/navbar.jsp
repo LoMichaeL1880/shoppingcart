@@ -46,7 +46,11 @@
         <div class="navbar bg-success navbar-expand-sm navbar-dark">
             <ul class="navbar-nav">
                 <li class="nav-item active">
+<<<<<<< HEAD
                   <h3>Backend</h3>
+=======
+                  <h3>Shopping Cart Backend</h3>
+>>>>>>> branch 'master' of https://github.com/LoMichaeL1880/shoppingcart.git
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="http://localhost:8080/shoppingcart/shopping/index">Go to Shopping Cart</a>

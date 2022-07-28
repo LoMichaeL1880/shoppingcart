@@ -18,8 +18,13 @@
         <div id="menu_account" class="collapse show" data-parent="#aside">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
+<<<<<<< HEAD
                     <li class="list-group-item mousehand" id="memberlist">會員列表</li>
                     <li class="list-group-item mousehand" id="memberupdate">帳號權限修改</li>
+=======
+                    <li class="list-group-item mousehand">會員列表</li>
+                    <li class="list-group-item mousehand">帳號權限修改</li>
+>>>>>>> branch 'master' of https://github.com/LoMichaeL1880/shoppingcart.git
                 </ul>
             </div>
         </div>
@@ -33,8 +38,13 @@
         <div id="menu_product" class="collapse" data-parent="#aside">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
+<<<<<<< HEAD
                     <li class="list-group-item mousehand" id="addp">單一商品上下架</li>
                     <li class="list-group-item mousehand" id="productlist">商品列表</li>
+=======
+                    <li class="list-group-item mousehand">單一商品上下架</li>
+                    <li class="list-group-item mousehand">商品列表</li>
+>>>>>>> branch 'master' of https://github.com/LoMichaeL1880/shoppingcart.git
                 </ul>
             </div>
         </div>
@@ -48,8 +58,13 @@
         <div id="menu_orders" class="collapse" data-parent="#aside">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
+<<<<<<< HEAD
                     <li class="list-group-item mousehand" id="order">單一訂單查詢</li>
                     <li class="list-group-item mousehand" id="orderlist">訂單列表</li>
+=======
+                    <li class="list-group-item mousehand">單一訂單查詢</li>
+                    <li class="list-group-item mousehand">訂單列表</li>
+>>>>>>> branch 'master' of https://github.com/LoMichaeL1880/shoppingcart.git
                 </ul>
             </div>
         </div>
