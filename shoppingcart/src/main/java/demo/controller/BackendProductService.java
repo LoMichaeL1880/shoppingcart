@@ -3,6 +3,9 @@ package demo.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -38,6 +41,20 @@ public class BackendProductService {
 			return "backend/product/product";
 		}
 		
+		@RequestMapping(value="/sellingproduct", method=RequestMethod.GET)
+		public String backendsellingProduct(ModelMap model) {
+			List<Product> list = new daoProduct().querySelling();
+			model.addAttribute("productList", list);
+			return "backend/product/sellingproduct";
+		}
+		
+		@RequestMapping(value="/stopsellingproduct", method=RequestMethod.GET)
+		public String backendstopsellingProduct(ModelMap model) {
+			List<Product> list = new daoProduct().queryStopSelling();
+			model.addAttribute("productList", list);
+			return "backend/product/stopsellingproduct";
+		}
+		
 		@RequestMapping(value="/addp", method=RequestMethod.GET)
 		public String addProduct(ModelMap model) {
 			return "backend/product/addp";
@@ -45,7 +62,8 @@ public class BackendProductService {
 		
 		// upload picture
 		@RequestMapping(value="/uploadpicture",method=RequestMethod.POST,consumes = {"multipart/form-data"})
-		public ModelAndView uploadPic(@RequestParam("file") MultipartFile multipart,HttpSession session) throws Exception{
+		@ResponseBody
+		public StringBuilder uploadPic(@RequestParam("file") MultipartFile multipart,HttpSession session) throws Exception{
 			StringBuilder picname = new StringBuilder("../img/");
 			try {
 				ServletContext context = session.getServletContext();
@@ -66,26 +84,73 @@ public class BackendProductService {
 				e.printStackTrace();
 			}
 			System.out.println(multipart.getOriginalFilename());
-			return new ModelAndView("backend/product/test","picfilename",multipart.getOriginalFilename());
-			//return picname;
+			//return new ModelAndView("backend/product/test","picfilename",multipart.getOriginalFilename());
+			return picname;
 		}
 		
 		@RequestMapping(value= "/add", method= RequestMethod.POST)
+		@ResponseBody
 		public String addProductToDB(@RequestBody Product product) {
+			
+			
+			
+			Timestamp uploadtime;
+			LocalDateTime nowtime = (LocalDateTime.now());
+			uploadtime = Timestamp.valueOf(nowtime);	
+			product.setPuploaddate(uploadtime);
+			product.setStatus("selling");
 			System.out.println(product.toString());
-						
-			return product.toString();
+			daoProduct.add(product);
+			return "Product Added";
 			
 		}
 		
+		@RequestMapping(value="/updateproduct/{pid}")
+		public String updateBanner(@PathParam("pid") String id, ModelMap model) {
+			System.out.println(id);
+			Product p = null;
+			try {
+				p = daoProduct.queryById(id);
+				System.out.println(p.toString());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			model.addAttribute("objProduct", p);
+			return "backend/product/updateProduct";
+		}
+		
+		@RequestMapping(value="/updated", method=RequestMethod.POST)
+		@ResponseBody
+		public String updateProductOK(@RequestBody Product p ,ModelMap model) {
+			daoProduct.updateProduct(p);
+			return "Update Success";
+		}
 		
 		/*
-		@RequestMapping(value = "/remove/{pid}", method=RequestMethod.GET)
+		@RequestMapping(value= "/checkId", method= RequestMethod.POST)
+		@ResponseBody
+		public String checkId(@RequestBody String id) {
+			String respond="";
+			boolean flag=false;
+			flag = daoProduct.checkId(id);
+			if(flag==true)
+			{
+				respond = "ID exist";
+			}
+			else
+			{
+				respond="ID Checked";
+			}
+			return respond;
+		}
+		
+		@RequestMapping(value = "/delete/{pid}", method=RequestMethod.GET)
 		public String deleteProduct(@PathVariable("pid") String id, ModelMap model) {
-			boolean flag = daoBanner.deleteBanner(id);
+			boolean flag = daoProduct.deleteProduct(id);
 			if(flag) {
-				List<Banner> list = new daoBanner().queryAll();
-				model.addAttribute("bannerList", list);
+				List<Product> list = new daoProduct().queryAll();
+				model.addAttribute("PrductList", list);
 			}
 			else {
 				System.out.println("SQL fail");
@@ -93,4 +158,18 @@ public class BackendProductService {
 			return "backend/product/product";
 		}
 		*/
+
+		@RequestMapping(value = "/stopselling/{pid}", method=RequestMethod.GET)
+		public static void stopSellingProduct(@PathVariable("pid") String id, ModelMap model) {
+			Product p = null;
+			try {
+				p = daoProduct.queryById(id);
+				p.setStatus("stopselling");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
 }

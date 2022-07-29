@@ -33,8 +33,10 @@
         <div id="menu_product" class="collapse" data-parent="#aside">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item mousehand" id="addp">單一商品上下架</li>
-                    <li class="list-group-item mousehand" id="productlist">商品列表</li>
+                    <li class="list-group-item mousehand" id="addp">單一商品上架</li>
+                    <li class="list-group-item mousehand" id="sellingproduct">販售中商品</li>
+                    <li class="list-group-item mousehand" id="stopsellingproduct">已下架商品</li>
+                    <li class="list-group-item mousehand" id="productlist">所有商品</li>
                 </ul>
             </div>
         </div>

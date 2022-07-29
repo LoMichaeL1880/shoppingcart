@@ -56,6 +56,23 @@
 						$("#mainarea").html(data);
 					}
 				});
+			});$("#sellingproduct").click(function(){
+				$.ajax("sellingproduct",{
+					type:"GET",
+					dataType:"html",
+					success:function(data,status){
+						$("#mainarea").html(data);
+					}
+				});
+			});
+			$("#stopsellingproduct").click(function(){
+				$.ajax("stopsellingproduct",{
+					type:"GET",
+					dataType:"html",
+					success:function(data,status){
+						$("#mainarea").html(data);
+					}
+				});
 			});
 			// orders
 			$("#order").click(function(){

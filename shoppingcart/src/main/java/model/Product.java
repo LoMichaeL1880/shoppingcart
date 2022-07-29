@@ -35,8 +35,10 @@ public class Product implements Serializable {
 	private String pspecification;
 
 	private int pstock;
+	
+	private String status;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date puploaddate;
 
 	//bi-directional many-to-one association to Orderdetail
@@ -130,6 +132,14 @@ public class Product implements Serializable {
 	public void setPstock(int pstock) {
 		this.pstock = pstock;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public Date getPuploaddate() {
 		return this.puploaddate;
@@ -172,7 +182,7 @@ public class Product implements Serializable {
 	@Override
 	public String toString()
 	{
-		return pid+","+pname+","+pprice+","+psize+","+pcolor+","+pstock+","+pintroduction+","+pspecification+","+pamount;
+		return pid+","+pname+","+pprice+","+psize+","+pcolor+","+pstock+","+pintroduction+","+pspecification+","+pamount+","+ppicpath+","+status;
 		
 	}
 }
