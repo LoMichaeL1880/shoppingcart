@@ -3,6 +3,8 @@ package demo.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -114,6 +116,6 @@ public class BackendBannerService {
 		else {
 			System.out.println("SQL fail");
 		}
-		return "redirect:/backend/home";
+		return "backend/banner/banner";
 	}
 }

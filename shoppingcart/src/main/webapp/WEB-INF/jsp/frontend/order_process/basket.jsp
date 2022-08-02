@@ -1,33 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=BIG5"
     pageEncoding="BIG5"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
   <head>
-	<%@include file="home_head.jsp" %>
+	<%@include file="../../frontend/home/home_head.jsp" %>
   </head>
   <body>
     <!-- navbar -->
-    <%@include file="navbar.jsp" %>
+	<% if(session.getAttribute("login") != null){ %>
+		<%@include file="../../frontend/home/navbar_login.jsp" %>
+	<% } else { %>
+		<%@include file="../../frontend/home/navbar.jsp" %>
+	<% } %>
 
 
     <div id="all">
       <div id="content">
         <div class="container">
           <div class="row">
-            <div class="col-lg-12">
-              <!-- breadcrumb-->
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li aria-current="page" class="breadcrumb-item active">Shopping cart</li>
-                </ol>
-              </nav>
-            </div>
+          
+            
+            
             <div id="basket" class="col-lg-9">
               <div class="box">
-                <form method="post" action="checkout1.html">
+              
+              
+                <form method="post" action="checkout1">
                   <h1>Shopping cart</h1>
-                  <p class="text-muted">You currently have 3 item(s) in your cart.</p>
+                  <p class="text-muted">You currently have ${sessionScope.productincar } item(s) in your cart.</p>
+                  
+                  <!-- 商品內容 -->
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -39,102 +42,59 @@
                           <th colspan="2">Total</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td><a href="#"><img src="img/detailsquare.jpg" alt="White Blouse Armani"></a></td>
-                          <td><a href="#">White Blouse Armani</a></td>
-                          <td>
-                            <input type="number" value="2" class="form-control">
-                          </td>
-                          <td>$123.00</td>
-                          <td>$0.00</td>
-                          <td>$246.00</td>
-                          <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="#"><img src="img/basketsquare.jpg" alt="Black Blouse Armani"></a></td>
-                          <td><a href="#">Black Blouse Armani</a></td>
-                          <td>
-                            <input type="number" value="1" class="form-control">
-                          </td>
-                          <td>$200.00</td>
-                          <td>$0.00</td>
-                          <td>$200.00</td>
-                          <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                        </tr>
+                      <tbody>                        
+                        <!-- 產品清單 -->  
+                        <c:set var="total" value="0"/>
+                        <c:set var="num" value="0"></c:set>                  
+                        <c:forEach var="o" items="${order }">
+	                        <tr>
+	                          <c:set var="num" value="${num + 1 }"></c:set>
+	                          <td><a href="#"><img src="${o.product.ppicpath }" alt=""></a></td>
+	                          <td><a href="#">${o.product.pname }</a></td>
+	                          <td>
+	                            <input onclick="change('${num}')" id="q${num }" type="number" value="${o.quantity }" class="form-control">
+	                          </td>
+	                          <td>$${o.price }</td>
+	                          <input type="hidden" value="${o.price }" id="p${num }">
+	                          <td>$0.00</td>
+	                          <td id="s${num }">$${o.price*o.quantity }</td>
+	                          <c:set var="total" value="${total + o.price*o.quantity }"/>
+	                          <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
+	                        </tr>
+	                        
+                        </c:forEach>      
                       </tbody>
                       <tfoot>
                         <tr>
                           <th colspan="5">Total</th>
-                          <th colspan="2">$446.00</th>
+                          <th colspan="2" id="total">$${total }</th>
                         </tr>
                       </tfoot>
                     </table>
                   </div>
+                  
+                  
+                  
                   <!-- /.table-responsive-->
                   <div class="box-footer d-flex justify-content-between flex-column flex-lg-row">
-                    <div class="left"><a href="category.html" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Continue shopping</a></div>
+                    <div class="left"><a href="category" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Continue shopping</a></div>
                     <div class="right">
-                      <button class="btn btn-outline-secondary"><i class="fa fa-refresh"></i> Update cart</button>
-                      <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></button>
+                      <button type="submit" class="btn btn-primary">Proceed to pay<i class="fa fa-chevron-right"></i></button>
                     </div>
                   </div>
+                  
+                  
                 </form>
               </div>
               <!-- /.box-->
-              <div class="row same-height-row">
-                <div class="col-lg-3 col-md-6">
-                  <div class="box same-height">
-                    <h3>You may also like these products</h3>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="product same-height">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product2.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product2.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3>Fur coat</h3>
-                      <p class="price">$143</p>
-                    </div>
-                  </div>
-                  <!-- /.product-->
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="product same-height">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product1.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product1_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product1.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3>Fur coat</h3>
-                      <p class="price">$143</p>
-                    </div>
-                  </div>
-                  <!-- /.product-->
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="product same-height">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product3.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product3.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3>Fur coat</h3>
-                      <p class="price">$143</p>
-                    </div>
-                  </div>
-                  <!-- /.product-->
-                </div>
-              </div>
+              
+
+              <!-- 可能喜歡 -->
+			  <%@include file="../../frontend/products/maylike.jsp" %>
+			  
             </div>
+            
+            <!-- 右邊小計 -->
             <!-- /.col-lg-9-->
             <div class="col-lg-3">
               <div id="order-summary" class="box">
@@ -165,20 +125,11 @@
                   </table>
                 </div>
               </div>
-              <div class="box">
-                <div class="box-header">
-                  <h4 class="mb-0">Coupon code</h4>
-                </div>
-                <p class="text-muted">If you have a coupon code, please enter it in the box below.</p>
-                <form>
-                  <div class="input-group">
-                    <input type="text" class="form-control"><span class="input-group-append">
-                      <button type="button" class="btn btn-primary"><i class="fa fa-gift"></i></button></span>
-                  </div>
-                  <!-- /input-group-->
-                </form>
-              </div>
+              
             </div>
+            
+            
+            
             <!-- /.col-md-3-->
           </div>
         </div>
@@ -187,7 +138,14 @@
 
 
     <!-- include footer -->
-    <%@include file="home_footer.jsp" %>
-
+    <%@include file="../../frontend/home/home_footer.jsp" %>
+	
+	<script type="text/javascript">
+		function change(i){
+			var total = $("#q"+i).val()*$("#p"+i).val();
+			$("#s"+i).html("$"+total);
+			
+		}
+	</script>
   </body>
 </html>

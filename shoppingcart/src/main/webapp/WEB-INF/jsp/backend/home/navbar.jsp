@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Obaju : e-commerce template</title>
+        <title>Backend of Shopping Cart</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="all,follow">
@@ -45,8 +45,8 @@
         <!--navbar-->
         <div class="navbar bg-success navbar-expand-sm navbar-dark">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <h3>Backend</h3>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Backend</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="http://localhost:8080/shoppingcart/shopping/index">Go to Shopping Cart</a>

@@ -18,32 +18,25 @@
 						<th>ID</th>
 						<th>Name</th>
 						<th>Account</th>
-						<th>Address</th>
-						<th>Phone</th>
-						<th>Email</th>
-						<th>Password</th>
 						<th>Role</th>
-						<th>Created Date</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:catch var="mem" items="${memberList}">
+					<c:forEach var="mem" items="${account}">
 						<tr>
 							<th>${mem.mid}</th>
 							<th>${mem.mname}</th>
-							<th>${mem.account}</th>
-							<th>${mem.address}</th>
-							<th>${mem.phone}</th>
-							<th>${mem.email}</th>
-							<th>${mem.password}</th>
+							<th>${mem.account}</th>						
 							<th>${mem.role}</th>
-							<th>${mem.createdate}</th>
 							
 						</tr>
-					</c:catch>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
+<script type="text/javascript">
+	
 
+</script>
 	</body>
 </html>

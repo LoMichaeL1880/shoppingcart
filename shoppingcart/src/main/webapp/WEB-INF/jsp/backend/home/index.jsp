@@ -74,9 +74,8 @@
 					}
 				});
 			});
-			// orders
-			$("#order").click(function(){
-				$.ajax("order",{
+			$("#queryproduct").click(function(){
+				$.ajax("queryproduct",{
 					type:"GET",
 					dataType:"html",
 					success:function(data,status){
@@ -84,8 +83,9 @@
 					}
 				});
 			});
-			$("#orderlist").click(function(){
-				$.ajax("orderlist",{
+			// orders
+			$("#order").click(function(){
+				$.ajax("order",{
 					type:"GET",
 					dataType:"html",
 					success:function(data,status){
@@ -105,6 +105,15 @@
 			});
 			$("#memberupdate").click(function(){
 				$.ajax("memberupdate",{
+					type:"GET",
+					dataType:"html",
+					success:function(data,status){
+						$("#mainarea").html(data);
+					}
+				});
+			});
+			$("#changerole").click(function(){
+				$.ajax("changerole",{
 					type:"GET",
 					dataType:"html",
 					success:function(data,status){

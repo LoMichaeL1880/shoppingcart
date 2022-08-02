@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import model.Banner;
 
 public class daoBanner {
+	
 	// banner : query all
 	public List<Banner> queryAll(){
 		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();

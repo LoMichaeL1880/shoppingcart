@@ -14,6 +14,17 @@ import model.Member;
 
 
 public class memberDAO {
+	
+	public static void main(String[] args) {
+		if(memberDAO.queryByAccount2("snqqpy3849@gmail.com")) {
+			System.out.println("true");;
+		}else {
+			System.out.println("false");
+		}
+	}
+	
+	
+//Member query all
 	public List<Member> queryAll() {
 		
 		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
@@ -24,7 +35,8 @@ public class memberDAO {
 		List<Member> list = query.getResultList();
 		return list;
 	}
-	
+
+//Member Add
 	public static void MemberAdd(Member m) {
 		
 		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
@@ -35,7 +47,7 @@ public class memberDAO {
         em.close();
     }
 	
-	
+//Member delete
 	public static boolean MemberDelete(String account) {
 				
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("shoppingcart");
@@ -63,29 +75,48 @@ public class memberDAO {
         emf.close();
         return flag;
 	}
-
-	/*public static boolean MemberUpdate(String account,String password) {
+	
+// Member query by account
+	public static Member queryByAccount(String account) {
+		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
+		String jsql = "SELECT m FROM Member m where m.account=:a";
+		em.getTransaction().begin();
+		Query query = em.createQuery(jsql, Member.class);
+		query.setParameter("a", account);
+		List<Member> list = query.getResultList();
+		if(list.size()!=0) {
+			Member[] m = list.toArray(new Member[list.size()]);
+			return m[0];
+		}
+		return null;
+	}
+	
+	public static boolean queryByAccount2(String account) {
+		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
+		String jsql = "SELECT m FROM Member m where m.account=:a";
+		em.getTransaction().begin();
+		Query query = em.createQuery(jsql, Member.class);
+		query.setParameter("a", account);
+		List<Member> list = query.getResultList();
+		if(list.size()!=0) {
+			return true;
+		}
+		return false;
+	}
+	
+//Member update
+	public static void MemberUpdate(Member m) {
 	   	EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
 	    em.getTransaction().begin();
-	    Query query = em.createQuery("update member SET password=:a  where account=:b");
-	    query.setParameter("a", password);
-	    query.setParameter("b", account);
+	    Member newM = queryByAccount(m.getAccount());
+	    newM.setPassword(m.getPassword());
+	    newM.setEmail(m.getEmail());
+	    em.persist(m);
 	    
-	    int r=query.executeUpdate();
-	    boolean flag=true;
-		    if(r>0) {
-		       System.out.println("update successfully");
-		       flag=true;
-		    }
-		    else {
-		    	System.out.println("update failed");
-	        	flag=false;
-	        }
 	    em.getTransaction().commit();
 	    em.close();
 	  
-	    return flag;
-	 }*/
+	 }
 }
 
 

@@ -1,5 +1,7 @@
 package demo.dao.product;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,6 +9,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import model.Category;
 import model.Product;
 
 public class daoProduct {
@@ -52,25 +55,27 @@ public class daoProduct {
 		Product p = list.get(0);
 		return p;
 	}
-	/*
-	public static boolean checkId(String id)
-	{
+		
+	public static List<Product> queryByCategory(String name){
 		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
-		String jsql = "SELECT from Product where pid =:a";
-		boolean flag = true;		
-		Query query = em.createQuery(jsql);
-		query.setParameter("a", id);
-		int r = query.executeUpdate();		
-		if(r>0) {
-			flag=true;
-			//em.getTransaction().commit();
-		} else {
-			flag=false;
-			//em.getTransaction().rollback();
-		}		
-		return flag;		
+		String jsql = "SELECT b FROM Product b where b.category.name =:a";
+		em.getTransaction().begin();
+		Query query = em.createQuery(jsql, Product.class);
+		query.setParameter("a", name);
+		List<Product> list = query.getResultList();
+		return list;	
 	}
-	*/
+	
+	public static List<Product> queryBySellingCategory(String name){
+		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
+		String jsql = "SELECT b FROM Product b where b.category.name =:a AND b.status=:c";
+		em.getTransaction().begin();
+		Query query = em.createQuery(jsql, Product.class);
+		query.setParameter("a", name);
+		query.setParameter("c", "selling");
+		List<Product> list = query.getResultList();
+		return list;	
+	}
 	
 	public static void add(Product s) 
 	{
@@ -85,24 +90,54 @@ public class daoProduct {
 	
 	public static void updateProduct(Product p) {
 		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
+		
+		System.out.println(p.toString());
+		Product pr =em.find(Product.class, p.getPid());
 		em.getTransaction().begin();
-		Product newp = daoProduct.queryById(p.getPid());
-		newp.setPname(p.getPname());
-		newp.setPprice(p.getPprice());
-		newp.setPsize(p.getPsize());
-		newp.setPcolor(p.getPcolor());
-		newp.setPstock(p.getPstock());
-		newp.setPintroduction(p.getPintroduction());
-		newp.setPspecification(p.getPspecification());
-		newp.setPuploaddate(p.getPuploaddate());
-		newp.setPamount(p.getPamount());
-		newp.setCategory(p.getCategory());
-		newp.setPpicpath(p.getPpicpath());
-		em.persist(newp);
+		pr.setPname(p.getPname());
+		pr.setPprice(p.getPprice());
+		pr.setPsize(p.getPsize());
+		pr.setPcolor(p.getPcolor());
+		pr.setPstock(p.getPstock());
+		pr.setPintroduction(p.getPintroduction());
+		pr.setPspecification(p.getPspecification());
+		pr.setPuploaddate(p.getPuploaddate());
+		pr.setPamount(p.getPamount());
+		pr.setCategory(p.getCategory());
+		pr.setPpicpath(p.getPpicpath());		
+		pr.setPuploaddate(p.getPuploaddate());
+		pr.setStatus("selling");
+		System.out.println(p.toString());
+		em.merge(pr);//新增=presist  修改=merge
 		em.getTransaction().commit();
 		em.close();
 	}
 	
+	public static void deleteProduct(Product p) {
+		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();		
+		Product pr =em.find(Product.class, p.getPid());
+		em.getTransaction().begin();		
+		pr.setPuploaddate(p.getPuploaddate());
+		pr.setStatus(p.getStatus());
+		System.out.println(p.toString());
+		em.merge(pr);//新增=presist  修改=merge
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public static void turnSellingProduct(Product p) {
+		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();		
+		Product pr =em.find(Product.class, p.getPid());
+		em.getTransaction().begin();		
+		pr.setPuploaddate(p.getPuploaddate());
+		pr.setStatus(p.getStatus());
+		System.out.println(p.toString());
+		em.merge(pr);//新增=presist  修改=merge
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	/*
 	public static boolean deleteProduct(String id) {
 		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
 		em.getTransaction().begin();
@@ -121,7 +156,7 @@ public class daoProduct {
 		em.close();		
 		return flag;
 	}
-	
+	*/
  /*	
 	public static void delete(String id)
 	{
@@ -150,4 +185,24 @@ public class daoProduct {
 		em.close();  
 	}
 */
+	
+	/*
+	public static boolean checkId(String id)
+	{
+		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
+		String jsql = "SELECT from Product where pid =:a";
+		boolean flag = true;		
+		Query query = em.createQuery(jsql);
+		query.setParameter("a", id);
+		int r = query.executeUpdate();		
+		if(r>0) {
+			flag=true;
+			//em.getTransaction().commit();
+		} else {
+			flag=false;
+			//em.getTransaction().rollback();
+		}		
+		return flag;		
+	}
+	*/
 }

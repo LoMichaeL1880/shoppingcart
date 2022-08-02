@@ -27,12 +27,12 @@ _________________________________________________________
 	        <div class="product">
 	          <div class="flip-container">
 	            <div class="flipper">
-	              <div class="front"><a href="detail.html"><img src="../img/product3.jpg" alt="" class="img-fluid"></a></div>
-	              <div class="back"><a href="detail.html"><img src="../img/product3_2.jpg" alt="" class="img-fluid"></a></div>
+	              <div class="front"><a href="detail"><img src="../img/product3.jpg" alt="" class="img-fluid"></a></div>
+	              <div class="back"><a href="detail"><img src="../img/product3_2.jpg" alt="" class="img-fluid"></a></div>
 	            </div>
-	          </div><a href="detail.html" class="invisible"><img src="../img/product3.jpg" alt="" class="img-fluid"></a>
+	          </div><a href="detail" class="invisible"><img src="../img/product3.jpg" alt="" class="img-fluid"></a>
 	          <div class="text">
-	            <h3><a href="detail.html">Black Blouse Versace</a></h3>
+	            <h3><a href="detail">Black Blouse Versace</a></h3>
 	            <p class="price"> 
 	              <del></del>$143.00
 	            </p>

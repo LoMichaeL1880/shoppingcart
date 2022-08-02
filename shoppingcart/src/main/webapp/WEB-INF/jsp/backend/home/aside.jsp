@@ -20,6 +20,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item mousehand" id="memberlist">會員列表</li>
                     <li class="list-group-item mousehand" id="memberupdate">帳號權限修改</li>
+                    <li class="list-group-item mousehand" id="changerole">帳號權限修改</li>
                 </ul>
             </div>
         </div>
@@ -34,6 +35,7 @@
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item mousehand" id="addp">單一商品上架</li>
+                    <li class="list-group-item mousehand" id="queryproduct">查詢商品</li>
                     <li class="list-group-item mousehand" id="sellingproduct">販售中商品</li>
                     <li class="list-group-item mousehand" id="stopsellingproduct">已下架商品</li>
                     <li class="list-group-item mousehand" id="productlist">所有商品</li>
@@ -50,7 +52,6 @@
         <div id="menu_orders" class="collapse" data-parent="#aside">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item mousehand" id="order">單一訂單查詢</li>
                     <li class="list-group-item mousehand" id="orderlist">訂單列表</li>
                 </ul>
             </div>

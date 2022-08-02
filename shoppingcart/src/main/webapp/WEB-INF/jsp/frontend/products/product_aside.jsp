@@ -13,30 +13,10 @@
     </div>
     <div class="card-body">
       <ul class="nav nav-pills flex-column category-menu">
-        <li><a href="category.html" class="nav-link">Men <span class="badge badge-secondary">42</span></a>
-          <ul class="list-unstyled">
-            <li><a href="category.html" class="nav-link">T-shirts</a></li>
-            <li><a href="category.html" class="nav-link">Shirts</a></li>
-            <li><a href="category.html" class="nav-link">Pants</a></li>
-            <li><a href="category.html" class="nav-link">Accessories</a></li>
-          </ul>
-        </li>
-        <li><a href="category.html" class="nav-link active">Ladies  <span class="badge badge-light">123</span></a>
-          <ul class="list-unstyled">
-            <li><a href="category.html" class="nav-link">T-shirts</a></li>
-            <li><a href="category.html" class="nav-link">Skirts</a></li>
-            <li><a href="category.html" class="nav-link">Pants</a></li>
-            <li><a href="category.html" class="nav-link">Accessories</a></li>
-          </ul>
-        </li>
-        <li><a href="category.html" class="nav-link">Kids  <span class="badge badge-secondary">11</span></a>
-          <ul class="list-unstyled">
-            <li><a href="category.html" class="nav-link">T-shirts</a></li>
-            <li><a href="category.html" class="nav-link">Skirts</a></li>
-            <li><a href="category.html" class="nav-link">Pants</a></li>
-            <li><a href="category.html" class="nav-link">Accessories</a></li>
-          </ul>
-        </li>
+        <li><a href="category" class="nav-link">Necklace </a></li>
+        <li><a href="category" class="nav-link">Bracelet </a></li>
+        <li><a href="category" class="nav-link">Rings </a></li>
+        <li><a href="category" class="nav-link">Earrings </a></li>
       </ul>
     </div>
   </div>

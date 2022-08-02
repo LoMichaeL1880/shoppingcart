@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<h2 align="center">新增產品</h2>
+			<h2 align="center">修改產品</h2>
 			<hr>
 			<div>產品代號<input type="text"  id="pid" value="${objProduct.pid }"><button  type="button" id="check">檢查是否重複</button></div>
 			<div>產品名稱<input type="text"  id="pname" value="${objProduct.pname }"></div>
@@ -18,17 +18,17 @@
 			<div>產品尺寸<input type="text"  id="psize" value="${objProduct.psize }"></div>
 			<div>產品顏色<input type="text"  id="pcolor" value="${objProduct.pcolor }"></div>
 			<div>產品存量<input type="text"  id="pstock" value="${objProduct.pstock }"></div>
-			<div>產品介紹<input type="text"  id="pintroduction" value=""${objProduct.pintroduction }"></div>
+			<div>產品介紹<input type="text"  id="pintroduction" value="${objProduct.pintroduction }"></div>
 			<div>產品規格<input type="text"  id="pspecification" value="${objProduct.pspecification }"></div>
 			<div>產品數量<input type="text"  id="pamount" value="${objProduct.pamount }"></div>
 			<div>產品類別<input type="text"  id="categorycode" value="${objProduct.category.id }"></div>
-			<div>產品類別<input type="text"  id="categorytype" value="${product.category.name }"></div>			
+			<div>產品類別<input type="text"  id="categorytype" value="${objProduct.category.name }"></div>			
 			<form id="pictureform" >	
 				<div>產品圖片<input type="file" id="${objProduct.ppicpath }" accept="image/gif, image/jpeg, image/png" name="file" ></div>
 				<div>
 					<image alt="" id="picturearea" height=100 width=150 src="">
 					<input type="submit" value="上傳圖片">
-					<input type="hidden" id="picuturepath">				
+					<input type="hidden" id="picturepath">				
 				</div>		
 			</form>	
 			<div><button  type="submit" id="send" hide>修改</button></div>
@@ -53,7 +53,7 @@ function show()
 	sobj.pspecification = document.getElementById("pspecification").value;
 	sobj.pamount = document.getElementById("pamount").value;
 	sobj.category = categoryObj;
-	sobj.ppicpath = document.getElementById("ppicpath").value;
+	sobj.ppicpath = document.getElementById("picturepath").value;
 	var stt = JSON.stringify(sobj);
 	alert(stt);
 }
@@ -101,7 +101,7 @@ $(document).ready(function(){
 		obj.pspecification = document.getElementById("pspecification").value;
 		obj.pamount = document.getElementById("pamount").value;
 		obj.category =cobj;
-		obj.ppicpath = document.getElementById("ppicpath").value;
+		obj.ppicpath = document.getElementById("picturepath").value;
 		var st = JSON.stringify(obj);
 		
 		$.ajax({

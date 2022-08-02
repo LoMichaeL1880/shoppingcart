@@ -4,33 +4,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<%@include file="home_head.jsp" %>
+		<%@include file="../../frontend/home/home_head.jsp" %>
 	</head>
 	<body>
 		<!-- navbar -->
-		<%@include file="navbar.jsp" %>
+		<% if(session.getAttribute("login") != null){ %>
+			<%@include file="../../frontend/home/navbar_login.jsp" %>
+		<% } else { %>
+			<%@include file="../../frontend/home/navbar.jsp" %>
+		<% } %>
+
 		<!-- container -->
 		<div id="all">
 			<div id="content">
-				<div class="container">
+				<div class="container"  id="maincontainer">
 		          <div class="row">
-		
-		            <!--麵包屑-->
-		            <div class="col-lg-12">
-		              <!-- breadcrumb-->
-		              <nav aria-label="breadcrumb">
-		                <ol class="breadcrumb">
-		                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-		                  <li aria-current="page" class="breadcrumb-item active">Ladies</li>
-		                </ol>
-		              </nav>
-		            </div>
 		
 					<!--側邊欄-->
 					<%@include file="product_aside.jsp" %>
 		
 		            <!--Product-->
-		            <div class="col-lg-9">
+		            <div class="col-lg-9" >
 		              <!--分頁及搜尋-->
 		              <div class="box info-bar">
 		                <div class="row">
@@ -55,26 +49,32 @@
 		
 		              <!--產品列表-->
 		              <div class="row products">
-		                <div class="col-lg-4 col-md-6">
-		                  <div class="product">
-		                    <div class="flip-container">
-		                      <div class="flipper">
-		                        <div class="front"><a href="detail.html"><img src="img/product1.jpg" alt="" class="img-fluid"></a></div>
-		                        <div class="back"><a href="detail.html"><img src="img/product1_2.jpg" alt="" class="img-fluid"></a></div>
-		                      </div>
-		                    </div><a href="detail.html" class="invisible"><img src="img/product1.jpg" alt="" class="img-fluid"></a>
-		                    <div class="text">
-		                      <h3><a href="detail.html">Fur coat with very but very very long name</a></h3>
-		                      <p class="price"> 
-		                        <del></del>$143.00
-		                      </p>
-		                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-		                    </div>
-		                    <!-- /.text-->
-		                  </div>
-		                  <!-- /.product -->
-		                </div>
-		
+		              
+		              	<c:forEach var="productlist" items="${productlist }">
+			              	<div class="col-lg-4 col-md-6">
+			                  <div class="product">
+			                    <div class="flip-container">
+			                      <div class="flipper">
+			                        <div class="front"><a href="#" onclick=send("${pageContext.request.contextPath }/shopping/detail/${productlist.pid }")><img src="${productlist.ppicpath }" alt="" class="img-fluid"></a></div>
+			                        <div class="back"><a href="#" onclick=send("${pageContext.request.contextPath }/shopping/detail/${productlist.pid }")><img src="${productlist.ppicpath }" alt="" class="img-fluid"></a></div>
+			                      </div>
+			                    </div><a href="#" onclick=send("${pageContext.request.contextPath }/shopping/detail/${productlist.pid }") class="invisible"><img src="${productlist.ppicpath }" alt="" class="img-fluid"></a>
+			                    <div class="text">
+			                      <h3><a href="#" onclick=send("${pageContext.request.contextPath }/shopping/detail/${productlist.pid }")>${productlist.pname }</a></h3>
+			                      <p class="price"> 
+			                        <del></del>$${productlist.pprice }
+			                      </p>
+			                      <p class="buttons">
+				                      <a href="#" onclick=send("${pageContext.request.contextPath }/shopping/detail/${productlist.pid }") class="btn btn-outline-secondary">View detail</a>
+				                      <a href="#" onclick=addtocart("${pageContext.request.contextPath }/shopping/addtocart/${productlist.pid }") class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+			                      </p>
+			                    </div>
+			                    <!-- /.text-->
+			                  </div>
+			                  <!-- /.product -->
+			                </div>
+		              	</c:forEach>
+		              	
 		              </div>
 		
 		              <!--產品分頁-->
@@ -105,6 +105,24 @@
 	
 	
 		<!-- include footer -->
-    	<%@include file="home_footer.jsp" %>
+    	<%@include file="../../frontend/home/home_footer.jsp" %>
+    	
+    	<script type="text/javascript">
+    		function send(url){
+    			$.get(url,function(data){
+    				$("#maincontainer").html(data);
+    			});
+    		}
+    		
+    		function addtocart(url){
+    			$.ajax(url,{
+    				type:"get",
+    				success:function(data){
+    					alert(data);
+    					history.go(0);
+    				}
+    			});
+    		}
+    	</script>
 	</body>
 </html>

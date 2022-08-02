@@ -8,11 +8,8 @@
 		<title>Insert title here</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
-	<body>
-		<div class="container" id="miancontainer">
-			<h2 align="center">停售產品</h2>
-			<hr>
-			<table id="table-1" class="table table-hover table-border">
+<body>
+	<table id="table-1" class="table table-hover table-border">
 				<thead class="table-success">
 					<tr>
 						<th>ID</th>
@@ -27,7 +24,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="pro" items="${productList }">
+					<c:forEach var="pro" items="${queryproductList }">
 						<tr>
 							<td>${pro.pid }</td>
 							<td>${pro.pname }</td>
@@ -39,19 +36,11 @@
 							<td>${pro.status }</td>
 							<td>
 								<a href="#" onclick=update("${pageContext.request.contextPath }/backend/updateproduct/${pro.pid }")>修改</a>
-								<a href="#" onclick=update("${pageContext.request.contextPath }/backend/selling/${pro.pid }")>上架</a>
+								<a href="#" onclick=update("${pageContext.request.contextPath }/backend/stopselling/${pro.pid }")>下架</a>
 							</td>		
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>
-<script>
-			function update(url){
-				$.get(url,function(data){
-					$("#miancontainer").html(data);
-				})
-			}
-		</script>
-	</body>
+</body>
 </html>

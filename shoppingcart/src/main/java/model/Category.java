@@ -20,7 +20,7 @@ public class Category implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to Product
-	@OneToMany(mappedBy="category")
+	@OneToMany(cascade=CascadeType.MERGE, mappedBy="category")
 	private List<Product> products;
 
 	public Category() {

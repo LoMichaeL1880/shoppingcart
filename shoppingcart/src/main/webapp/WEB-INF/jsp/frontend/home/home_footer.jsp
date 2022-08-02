@@ -23,7 +23,7 @@
               <h4 class="mb-3">User section</h4>
               <ul class="list-unstyled">
                 <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-                <li><a href="register.html">Regiter</a></li>
+                <li><a href="registerpage">Regiter</a></li>
               </ul>
             </div>
             

@@ -27,7 +27,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:catch var="mem" items="${memberList}">
+					<c:forEach var="mem" items="${memberList}">
 						<tr>
 							<th>${mem.mid}</th>
 							<th>${mem.mname}</th>
@@ -36,14 +36,23 @@
 							<th>${mem.phone}</th>
 							<th>${mem.email}</th>
 							<th>${mem.password}</th>
-							<th>${mem.role}</th>
+							<th>${mem.role}
+								<a href="#" onclick=update("${pageContext.request.contextPath }/backend/changerole/${mem.mid }")>修改</a>
+							</th>
 							<th>${mem.createdate}</th>
 							
 						</tr>
-					</c:catch>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
+<script type="text/javascript">
+function update(url){
+	$.get(url,function(data){
+		$("#miancontainer").html(data);
+	})
+}
 
+</script>
 	</body>
 </html>

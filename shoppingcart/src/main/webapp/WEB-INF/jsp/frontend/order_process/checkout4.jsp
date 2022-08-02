@@ -3,17 +3,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<%@include file="home_head.jsp" %>
+	<%@include file="../../frontend/home/home_head.jsp" %>
   </head>
   <body>
     <!-- navbar -->
-    <%@include file="navbar.jsp" %>
+    <%@include file="../../frontend/home/navbar.jsp" %>
 
 
     <div id="all">
       <div id="content">
         <div class="container">
           <div class="row">
+          
+          
             <div class="col-lg-12">
               <!-- breadcrumb-->
               <nav aria-label="breadcrumb">
@@ -23,11 +25,18 @@
                 </ol>
               </nav>
             </div>
+            
+            
             <div id="checkout" class="col-lg-9">
               <div class="box">
+              
+              
                 <form method="get" action="checkout4.html">
+                
+                
                   <h1>Checkout - Order review</h1>
-                  <div class="nav flex-column flex-sm-row nav-pills"><a href="checkout1.html" class="nav-link flex-sm-fill text-sm-center"> <i class="fa fa-map-marker">                  </i>Address</a><a href="checkout2.html" class="nav-link flex-sm-fill text-sm-center"> <i class="fa fa-truck">                       </i>Delivery Method</a><a href="checkout3.html" class="nav-link flex-sm-fill text-sm-center"> <i class="fa fa-money">                      </i>Payment Method</a><a href="#" class="nav-link flex-sm-fill text-sm-center active"> <i class="fa fa-eye">                     </i>Order Review</a></div>
+                  
+                  
                   <div class="content">
                     <div class="table-responsive">
                       <table class="table">
@@ -42,7 +51,7 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td><a href="#"><img src="img/detailsquare.jpg" alt="White Blouse Armani"></a></td>
+                            <td><a href="#"><img src="../img/detailsquare.jpg" alt="White Blouse Armani"></a></td>
                             <td><a href="#">White Blouse Armani</a></td>
                             <td>2</td>
                             <td>$123.00</td>
@@ -50,7 +59,7 @@
                             <td>$246.00</td>
                           </tr>
                           <tr>
-                            <td><a href="#"><img src="img/basketsquare.jpg" alt="Black Blouse Armani"></a></td>
+                            <td><a href="#"><img src="../img/basketsquare.jpg" alt="Black Blouse Armani"></a></td>
                             <td><a href="#">Black Blouse Armani</a></td>
                             <td>1</td>
                             <td>$200.00</td>
@@ -68,14 +77,23 @@
                     </div>
                     <!-- /.table-responsive-->
                   </div>
+                  
+                  
                   <!-- /.content-->
-                  <div class="box-footer d-flex justify-content-between"><a href="checkout3.html" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i>Back to payment method</a>
+                  <div class="box-footer d-flex justify-content-between">
+                  	<a href="checkout1" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i>Back to basket</a>
                     <button type="submit" class="btn btn-primary">Place an order<i class="fa fa-chevron-right"></i></button>
                   </div>
+                  
+                  
                 </form>
+                
+                
               </div>
               <!-- /.box-->
             </div>
+            
+            
             <!-- /.col-lg-9-->
             <div class="col-lg-3">
               <div id="order-summary" class="card">
@@ -109,6 +127,8 @@
                 </div>
               </div>
             </div>
+            
+            
             <!-- /.col-lg-3-->
           </div>
         </div>
@@ -116,7 +136,7 @@
     </div>
  
      <!-- include footer -->
-    <%@include file="home_footer.jsp" %>
+    <%@include file="../../frontend/home/home_footer.jsp" %>
  
   </body>
 </html>

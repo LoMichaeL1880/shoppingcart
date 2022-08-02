@@ -11,7 +11,11 @@
 		<div id="all">
 			<div id="content">
 				<!-- navbar -->
-				<%@include file="navbar.jsp" %>
+				<% if(session.getAttribute("login") != null){ %>
+					<%@include file="navbar_login.jsp" %>
+				<% } else { %>
+					<%@include file="navbar.jsp" %>
+				<% } %>
 				
 				<!-- ½ü¼½ -->
 				<%@include file="carousel.jsp" %>
@@ -27,5 +31,11 @@
 	
 		<!-- include footer -->
     	<%@include file="home_footer.jsp" %>
+    	
+    	<script type="text/javascript">
+    		$(document).ready(function(){
+    			
+    		});
+    	</script>
 	</body>
 </html>

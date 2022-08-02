@@ -9,8 +9,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div class="container">
-			<h2 align="center">產品</h2>
+		<div class="container" id="miancontainer">
+			<h2 align="center">所有產品</h2>
 			<hr>
 			<table id="table-1" class="table table-hover table-border">
 				<thead class="table-success">
@@ -34,18 +34,23 @@
 							<td>${pro.pprice }</td>
 							<td>${pro.pstock }</td>
 							<td>${pro.puploaddate }</td>
-							<td>${pro.category }</td>		
-							<td><img src="${pro.ppicpath }"  class="small_banner"/></td>		
+							<td>${pro.category.name }</td>		
+							<td><img src="${pro.ppicpath }"  height=80 width=100></td>		
 							<td>${pro.status }</td>
 							<td>
-								<a href="${pageContext.request.contextPath }/backend/updateproduct/${pro.pid }" onclick="return confirm('確定要修改 ${item.product.name}?')">修改</a>
-								<a href="${pageContext.request.contextPath }/backend/stopselling/${pro.pid }" onclick="return confirm('確定要下架 ${item.product.name}?')">下架</a>
+								<a href="#" onclick=update("${pageContext.request.contextPath }/backend/updateproduct/${pro.pid }")>修改</a>
 							</td>		
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-
+<script>
+			function update(url){
+				$.get(url,function(data){
+					$("#miancontainer").html(data);
+				})
+			}
+		</script>
 	</body>
 </html>

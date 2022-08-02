@@ -28,10 +28,10 @@
 				<div>
 					<image alt="" id="picturearea" height=100 width=150 src="">
 					<input type="submit" value="上傳圖片">
-					<input type="hidden" id="picuturepath">				
+					<input type="hidden" id="picturepath">				
 				</div>		
 			</form>	
-			<div><button  type="submit" id="send" hide>新增</button></div>
+			<div><button  type="submit" id="send" >新增</button></div>
 			<div><button onclick="show()">TEST</button></div>
 			<div id="test"></div>
 			
@@ -53,7 +53,7 @@ function show()
 	sobj.pspecification = document.getElementById("pspecification").value;
 	sobj.pamount = document.getElementById("pamount").value;
 	sobj.category = categoryObj;
-	sobj.ppicpath = document.getElementById("ppicpath").value;
+	sobj.ppicpath = document.getElementById("picturepath").value;
 	var stt = JSON.stringify(sobj);
 	alert(stt);
 }
@@ -78,7 +78,7 @@ $(document).ready(function(){
 				//$("#test").html(data);
 			},
 			error : function(data) {
-				alert(data.exception);
+				//alert(data.exception);
 			}
 		});
 	});
@@ -101,9 +101,9 @@ $(document).ready(function(){
 		obj.pspecification = document.getElementById("pspecification").value;
 		obj.pamount = document.getElementById("pamount").value;
 		obj.category =cobj;
-		obj.ppicpath = document.getElementById("ppicpath").value;
+		obj.ppicpath = document.getElementById("picturepath").value;
 		var st = JSON.stringify(obj);
-		
+		//alert(st);
 		$.ajax({
 			type:"post",
 			url:"add",

@@ -27,7 +27,7 @@ public class BackendMemberService {
 	// create new member 
 	@RequestMapping(value="/add", method=RequestMethod.GET)
 	public String Memberadd(ModelMap model) {
-			return "/backend/account/mainMember";
+			return "/backend/account/member";
 	
 	
 	}
