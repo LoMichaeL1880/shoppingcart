@@ -109,9 +109,15 @@ public class memberDAO {
 	   	EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
 	    em.getTransaction().begin();
 	    Member newM = queryByAccount(m.getAccount());
+	    
 	    newM.setPassword(m.getPassword());
+	    newM.setMname(m.getMname());
+	    newM.setAddress(m.getAddress());
+	    newM.setPhone(m.getPhone());
 	    newM.setEmail(m.getEmail());
-	    em.persist(m);
+	    newM.setRole(m.getRole());
+	    newM.setCreatedate(m.getCreatedate());
+	    em.merge(m);
 	    
 	    em.getTransaction().commit();
 	    em.close();

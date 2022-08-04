@@ -41,6 +41,15 @@ public class BackendBannerService {
 		return "backend/banner/banner";
 	}
 	
+	// PagedListHolder
+//	@RequestMapping(value="/banner", method=RequestMethod.GET)
+//	public String backendBanner(ModelMap model) {
+//		List<Banner> list = new daoBanner().queryAll();
+//		model.addAttribute("bannerList", list);
+//		return "backend/banner/banner2";
+//	}
+	
+	
 	/* --- insert banner ---*/
 	// insert banner
 	@RequestMapping(value="/insert", method=RequestMethod.GET)

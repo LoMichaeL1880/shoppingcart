@@ -37,7 +37,7 @@ public class Member implements Serializable {
 
 	//bi-directional many-to-one association to Order
 	@OneToMany(mappedBy="member")
-	private List<Order> orders;
+	private List<Orderlist> orders;
 
 	public Member() {
 	}
@@ -114,31 +114,33 @@ public class Member implements Serializable {
 		this.role = role;
 	}
 
-	public List<Order> getOrders() {
+	public List<Orderlist> getOrders() {
 		return this.orders;
 	}
 
-	public void setOrders(List<Order> orders) {
+	public void setOrders(List<Orderlist> orders) {
 		this.orders = orders;
 	}
 
-	public Order addOrder(Order order) {
+	public Orderlist addOrder(Orderlist order) {
 		getOrders().add(order);
 		order.setMember(this);
 
 		return order;
 	}
 
-	public Order removeOrder(Order order) {
+	public Orderlist removeOrder(Orderlist order) {
 		getOrders().remove(order);
 		order.setMember(null);
 
 		return order;
 	}
+
 	@Override
-	public String toString()
-	{
-		return mid+","+account+","+ mname+","+role;
-		
+	public String toString() {
+		return "Member [mid=" + mid + ", account=" + account + ", address=" + address + ", createdate=" + createdate
+				+ ", email=" + email + ", mname=" + mname + ", password=" + password + ", phone=" + phone + ", role="
+				+ role + ", orders=" + orders + "]";
 	}
+
 }

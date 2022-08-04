@@ -25,8 +25,8 @@ public class Orderlist implements Serializable {
 
 	private String ordercol;
 
-	@Temporal(TemporalType.DATE)
-	private Date orderdate;
+
+	private String orderdate;
 
 	private String status;
 
@@ -77,12 +77,12 @@ public class Orderlist implements Serializable {
 		this.ordercol = ordercol;
 	}
 
-	public Date getOrderdate() {
+	public String getOrderdate() {
 		return this.orderdate;
 	}
 
-	public void setOrderdate(Date orderdate) {
-		this.orderdate = orderdate;
+	public void setOrderdate(String string) {
+		this.orderdate = string;
 	}
 
 	public String getStatus() {

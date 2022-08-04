@@ -7,7 +7,11 @@
   </head>
   <body>
     <!-- navbar -->
-    <%@include file="../../frontend/home/navbar.jsp" %>
+	<% if(session.getAttribute("login") != null){ %>
+		<%@include file="../../frontend/home/navbar_login.jsp" %>
+	<% } else { %>
+		<%@include file="../../frontend/home/navbar.jsp" %>
+	<% } %>
 
 
     <div id="all">
@@ -15,102 +19,58 @@
         <div class="container">
           <div class="row">
           
-          
-            <div class="col-lg-12">
-              <!-- breadcrumb-->
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li aria-current="page" class="breadcrumb-item active">Checkout - Address</li>
-                </ol>
-              </nav>
-            </div>
             
             
-            <div id="checkout" class="col-lg-9">
+            <div id="checkout" class="col-lg-12">
               <div class="box">
               
               
-                <form method="post" action="checkout4">
+                
                   <h1>Checkout - Address</h1>
                   
                   
                   <div class="content py-3">
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-12">
                         <div class="form-group">
-                          <label for="firstname">Firstname</label>
-                          <input id="firstname" type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="lastname">Lastname</label>
-                          <input id="lastname" type="text" class="form-control">
+                          <label for="name">Name</label>
+                          <input id="name" type="text" class="form-control" value="${member.mname }">
                         </div>
                       </div>
                     </div>
                     <!-- /.row-->
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-12">
                         <div class="form-group">
-                          <label for="company">Company</label>
-                          <input id="company" type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="street">Street</label>
-                          <input id="street" type="text" class="form-control">
+                          <label for="address">Address</label>
+                          <input id="address" type="text" class="form-control" value="${member.address }">
                         </div>
                       </div>
                     </div>
                     <!-- /.row-->
                     <div class="row">
-                      <div class="col-md-6 col-lg-3">
-                        <div class="form-group">
-                          <label for="city">Company</label>
-                          <input id="city" type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <div class="form-group">
-                          <label for="zip">ZIP</label>
-                          <input id="zip" type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <div class="form-group">
-                          <label for="state">State</label>
-                          <select id="state" class="form-control"></select>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <div class="form-group">
-                          <label for="country">Country</label>
-                          <select id="country" class="form-control"></select>
-                        </div>
-                      </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="phone">Telephone</label>
-                          <input id="phone" type="text" class="form-control">
+                          <input id="phone" type="text" class="form-control" value="${member.phone }">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="email">Email</label>
-                          <input id="email" type="text" class="form-control">
+                          <input id="email" type="text" class="form-control" value="${member.email }">
                         </div>
                       </div>
                     </div>
                     <!-- /.row-->
                   </div>
                   
+                <form method="post" action="checkout4">
                   
                   <div class="box-footer d-flex justify-content-between">
                   	<a href="basket" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i>Back to Basket</a>
-                    <button type="submit" class="btn btn-primary">Continue to Delivery Method<i class="fa fa-chevron-right"></i></button>
+                    <input type="hidden" id="sendmember" name="sendmember">
+                    <button type="submit" onclick="return send()" class="btn btn-primary">Continue to Complete<i class="fa fa-chevron-right"></i></button>
                   </div>
                   
                   
@@ -118,42 +78,6 @@
               </div>
               <!-- /.box-->
             </div>
-            
-            
-            <!-- /.col-lg-9-->
-            <div class="col-lg-3">
-              <div id="order-summary" class="card">
-                <div class="card-header">
-                  <h3 class="mt-4 mb-4">Order summary</h3>
-                </div>
-                <div class="card-body">
-                  <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
-                  <div class="table-responsive">
-                    <table class="table">
-                      <tbody>
-                        <tr>
-                          <td>Order subtotal</td>
-                          <th>$446.00</th>
-                        </tr>
-                        <tr>
-                          <td>Shipping and handling</td>
-                          <th>$10.00</th>
-                        </tr>
-                        <tr>
-                          <td>Tax</td>
-                          <th>$0.00</th>
-                        </tr>
-                        <tr class="total">
-                          <td>Total</td>
-                          <th>$456.00</th>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
             
             <!-- /.col-lg-3-->
           </div>
@@ -165,5 +89,17 @@
     <!-- include footer -->
     <%@include file="../../frontend/home/home_footer.jsp" %>
     
+    <script type="text/javascript">
+    	function send(){
+    		var obj = new Object();
+    		obj.mname = $("#name").val();
+    		obj.address = $("#address").val();
+    		obj.phone = $("#phone").val();
+    		obj.email = $("#email").val();
+    		var str = JSON.stringify(obj);
+    		$("#sendmember").val(str);
+    		return true;
+    	}
+    </script>
   </body>
 </html>

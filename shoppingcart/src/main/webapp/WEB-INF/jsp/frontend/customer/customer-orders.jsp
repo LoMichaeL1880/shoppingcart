@@ -8,22 +8,17 @@
   </head>
   <body>
     <!-- navbar -->
-    <%@include file="../../frontend/home/navbar.jsp" %>
+	<% if(session.getAttribute("login") != null){ %>
+		<%@include file="../../frontend/home/navbar_login.jsp" %>
+	<% } else { %>
+		<%@include file="../../frontend/home/navbar.jsp" %>
+	<% } %>
     
     
     <div id="all">
       <div id="content">
         <div class="container">
           <div class="row">
-            <div class="col-lg-12">
-              <!-- breadcrumb-->
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index">Home</a></li>
-                  <li aria-current="page" class="breadcrumb-item active">My orders</li>
-                </ol>
-              </nav>
-            </div>
             
             
             <div class="col-lg-3">
@@ -43,7 +38,6 @@
               <div class="box">
                 <h1>My orders</h1>
                 <p class="lead">Your orders on one place.</p>
-                <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
                 <hr>
                 
                 
@@ -58,12 +52,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <c:forEach begin="1" end="5">
+                      <c:forEach var="o" items="${orderList }">
                       	<tr>
-	                      	<th># 1735</th>
-	                        <td>22/06/2013</td>
-	                        <td>$ 150.00</td>
-	                        <td><a href="customer-order" class="btn btn-primary btn-sm">View</a></td>
+	                      	<th>${o.orderid }</th>
+	                        <td>${o.orderdate }</td>
+	                        <td>$ ${o.totalprice }</td>
+	                        <td><a href="customer-order/${o.orderid }" class="btn btn-primary btn-sm">View</a></td>
                       	</tr>
                       </c:forEach>
                     </tbody>

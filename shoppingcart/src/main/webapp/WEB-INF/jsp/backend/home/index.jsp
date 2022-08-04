@@ -93,6 +93,7 @@
 					}
 				});
 			});
+			
 			// account
 			$("#memberlist").click(function(){
 				$.ajax("member",{
@@ -105,15 +106,6 @@
 			});
 			$("#memberupdate").click(function(){
 				$.ajax("memberupdate",{
-					type:"GET",
-					dataType:"html",
-					success:function(data,status){
-						$("#mainarea").html(data);
-					}
-				});
-			});
-			$("#changerole").click(function(){
-				$.ajax("changerole",{
 					type:"GET",
 					dataType:"html",
 					success:function(data,status){

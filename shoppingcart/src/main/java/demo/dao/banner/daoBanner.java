@@ -32,6 +32,20 @@ public class daoBanner {
 		return b;
 	}
 	
+	// banner : query for pagination
+	public static List<Banner> queryForPagination(int start, int num){
+		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();
+		String jsql = "select b from Banner b limit :x , :y";
+		em.getTransaction().begin();
+		Query query = em.createQuery(jsql, Banner.class);
+		query.setParameter("x", start);
+		query.setParameter("y", num);
+		List<Banner> list = query.getResultList();
+		em.getTransaction().commit();
+		em.close();
+		return list;
+	}
+	
 	// banner : insert banner
 	public static void insertBanner(Banner b) {
 		EntityManager em = Persistence.createEntityManagerFactory("shoppingcart").createEntityManager();

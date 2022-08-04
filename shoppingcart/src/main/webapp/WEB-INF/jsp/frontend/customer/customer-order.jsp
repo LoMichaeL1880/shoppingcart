@@ -4,27 +4,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%@include file="../../frontend/home/home_head.jsp" %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Shopping Cart</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="../../vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="../../vendor/owl.carousel/assets/owl.carousel.css">
+    <link rel="stylesheet" href="../../vendor/owl.carousel/assets/owl.theme.default.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="../../css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="../../css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="../favicon.png">
+
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
 
-	<!-- navbar -->
-    <%@include file="../../frontend/home/navbar.jsp" %>
+    <!-- navbar -->
+	<% if(session.getAttribute("login") != null){ %>
+		<%@include file="../../frontend/home/navbar_login.jsp" %>
+	<% } else { %>
+		<%@include file="../../frontend/home/navbar.jsp" %>
+	<% } %>
 
     <div id="all">
       <div id="content">
         <div class="container">
           <div class="row">
-            <div class="col-lg-12">
-              <!-- breadcrumb-->
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index">Home</a></li>
-                  <li aria-current="page" class="breadcrumb-item"><a href="customer-orders">My orders</a></li>
-                  <li aria-current="page" class="breadcrumb-item active">Order # 1735</li>
-                </ol>
-              </nav>
-            </div>
+            
+            
             <div class="col-lg-3">
               <!--
               *** CUSTOMER MENU ***
@@ -38,8 +58,7 @@
             </div>
             <div id="customer-order" class="col-lg-9">
               <div class="box">
-                <h1>Order #1735</h1>
-                <p class="lead">Order #1735 was placed on <strong>22/06/2013</strong> and is currently <strong>Being prepared</strong>.</p>
+                <h1>Order </h1>
                 <hr>
                 <div class="table-responsive mb-4">
                   <table class="table">
@@ -55,14 +74,16 @@
                     
                     
                     <tbody>
-                      <c:forEach begin="1" end="3">
+                      <c:forEach var="o" items="${orderdetail }">
+                      	<c:set var="num" value="${num + 1 }"></c:set>
 	                      <tr>
-	                        <td><a href="#"><img src="../img/detailsquare.jpg" alt="White Blouse Armani"></a></td>
-	                        <td><a href="#">White Blouse Armani</a></td>
-	                        <td>2</td>
-	                        <td>$123.00</td>
+	                        <td><a href="#"><img src="../${o.product.ppicpath }" alt=""></a></td>
+	                        <td><a href="#">${o.product.pname }</a></td>
+	                        <td>${o.quantity }</td>
+	                        <td>$${o.price }</td>
 	                        <td>$0.00</td>
-	                        <td>$246.00</td>
+	                        <td>$${o.price*o.quantity }</td>
+	                        <c:set var="total" value="${total + o.price*o.quantity }"/>
 	                      </tr>
                       </c:forEach>                      
                     </tbody>
@@ -70,20 +91,8 @@
                     
                     <tfoot>
                       <tr>
-                        <th colspan="5" class="text-right">Order subtotal</th>
-                        <th>$446.00</th>
-                      </tr>
-                      <tr>
-                        <th colspan="5" class="text-right">Shipping and handling</th>
-                        <th>$10.00</th>
-                      </tr>
-                      <tr>
-                        <th colspan="5" class="text-right">Tax</th>
-                        <th>$0.00</th>
-                      </tr>
-                      <tr>
                         <th colspan="5" class="text-right">Total</th>
-                        <th>$456.00</th>
+                        <th>$${total }</th>
                       </tr>
                     </tfoot>
                   </table>

@@ -27,7 +27,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:catch var="mem" items="${memberList}">
+					<c:forEach var="mem" items="${memberList}">
 						<tr>
 							<th>${mem.mid}</th>
 							<th>${mem.mname}</th>
@@ -40,7 +40,7 @@
 							<th>${mem.createdate}</th>
 							
 						</tr>
-					</c:catch>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

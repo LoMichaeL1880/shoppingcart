@@ -15,28 +15,33 @@
 			<table id="table-1" class="table table-hover table-border">
 				<thead class="table-success">
 					<tr>
-						<th>訂單編號</th>
-						<th>商品編號</th>
+						<th>商品名稱</th>
 						<th>數量</th>
-						<th>金額</th>
+						<th>單價</th>
+						<th>折扣</th>
+						<th>小計</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="pic" items="${bannerList }">
+					<c:forEach var="order" items="${orderdetail }">
 						<tr>
-							<td>${pic.orderid }</td>
-							<td>${pic.pid }</td>
-							<td>${pic.amount}</td>
-							<td>${pic.price }
-							<td>
-								<a href="${pageContext.request.contextPath }/backend/update/${pic.picid }" onclick="return confirm('確定要修改 ${item.product.name}?')">修改</a>
-								<a href="${pageContext.request.contextPath }/backend/remove/${pic.picid }" onclick="return confirm('確定要刪除 ${item.product.name}?')">刪除</a>								
-							</td>
+							<td>${order.product.pname }</td>
+							<td>${order.quantity }</td>
+							<td>${order.product.pprice }</td>
+							<td>$0.00</td>
+							<td>${order.quantity*order.product.pprice }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+			<input type="button" class="btn btn-success" id="backpage" value="回上一頁">
 		</div>
 
 	</body>
+	<script type="text/javascript">
+		$("#backpage").click(function(){
+			window.history.back();
+		});
+	</script>
+	
 </html>

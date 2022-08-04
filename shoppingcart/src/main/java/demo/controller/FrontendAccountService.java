@@ -1,5 +1,7 @@
 package demo.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -13,8 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 
+import demo.dao.banner.daoOrder;
 import demo.dao.member.memberDAO;
 import model.Member;
+import model.Orderlist;
 
 @Controller
 @RequestMapping("/shopping")
@@ -79,7 +83,11 @@ public class FrontendAccountService {
 	
 	// 會員訂單畫面
 	@RequestMapping(value="/customer-orders", method=RequestMethod.GET)
-	public String customerOrders() {
+	public String customerOrders(ModelMap model, HttpSession session) {
+		String account = (String) session.getAttribute("login");
+		Member m = new memberDAO().queryByAccount(account);
+		List<Orderlist> list = new daoOrder().queryOrderlistByMember(m);		
+		model.addAttribute("orderList", list);
 		return "frontend/customer/customer-orders";
 	}
 	
@@ -94,6 +102,8 @@ public class FrontendAccountService {
 	@RequestMapping("/logout")
 	public String logout(ModelMap model,HttpSession session) {
 		session.removeAttribute("login");
+		session.removeAttribute("numofcart");
+		session.removeAttribute("productincar");
 		return "forward:index";
 	}
 	

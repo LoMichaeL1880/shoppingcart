@@ -12,8 +12,9 @@ import javax.persistence.*;
 @NamedQuery(name="Orderdetail.findAll", query="SELECT o FROM Orderdetail o")
 public class Orderdetail implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 	@Id
+	private String id;
+	
 	private String orderid;
 
 	private int price;
@@ -22,7 +23,7 @@ public class Orderdetail implements Serializable {
 
 	//bi-directional one-to-one association to Order
 	@OneToOne(mappedBy="orderdetail")
-	private Order order;
+	private Orderlist orderlist;
 
 	//bi-directional many-to-one association to Product
 	@ManyToOne
@@ -56,12 +57,12 @@ public class Orderdetail implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public Order getOrder() {
-		return this.order;
+	public Orderlist getOrder() {
+		return this.orderlist;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setOrder(Orderlist orderlist) {
+		this.orderlist = orderlist;
 	}
 
 	public Product getProduct() {
@@ -70,6 +71,14 @@ public class Orderdetail implements Serializable {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

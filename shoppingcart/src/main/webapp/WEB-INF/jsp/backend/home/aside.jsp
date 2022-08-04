@@ -20,7 +20,6 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item mousehand" id="memberlist">會員列表</li>
                     <li class="list-group-item mousehand" id="memberupdate">帳號權限修改</li>
-                    <li class="list-group-item mousehand" id="changerole">帳號權限修改</li>
                 </ul>
             </div>
         </div>
@@ -46,13 +45,13 @@
     <div class="card">
         <div class="card-header">
             <a class="card-link" data-toggle="collapse" href="#menu_orders">
-                Oreders
+                Orders
             </a>
         </div>
         <div id="menu_orders" class="collapse" data-parent="#aside">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item mousehand" id="orderlist">訂單列表</li>
+                    <li class="list-group-item mousehand" id="order">訂單查詢</li>
                 </ul>
             </div>
         </div>

@@ -7,7 +7,11 @@
   </head>
   <body>
     <!-- navbar -->
-    <%@include file="../frontend/home/navbar.jsp" %>
+	<% if(session.getAttribute("login") != null){ %>
+		<%@include file="../frontend/home/navbar_login.jsp" %>
+	<% } else { %>
+		<%@include file="../frontend/home/navbar.jsp" %>
+	<% } %>
     
     <!-- ·|­û -->
     <div id="all">

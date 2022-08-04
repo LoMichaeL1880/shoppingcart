@@ -3,12 +3,12 @@
 	<persistence-unit name="shoppingcart" transaction-type="RESOURCE_LOCAL">
 		<class>model.Category</class>
 		<class>model.Member</class>
-		<class>model.Order</class>
+		<class>model.Orderlist</class>
 		<class>model.Orderdetail</class>
 		<class>model.Product</class>
 		<class>model.Banner</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/shoppingcart?serverTimezone=Asia/Taipei"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/shoppingcart?serverTimezone=Asia/Taipei"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="1234"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

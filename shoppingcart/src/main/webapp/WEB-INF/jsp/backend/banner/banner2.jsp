@@ -46,7 +46,21 @@
 			
 		</div>
 		<script type="text/javascript">
-			
+			var page;
+			$(document).ready(function(){
+				$.ajax("",{
+					type:"get",
+					dataType:"json",
+					success:function(data,status){
+						$("#pagination").bootpag({
+							total:data.length,
+							page:
+						}).on("page",function(event,num){
+							$
+						});
+					}
+				});
+			});
 			function remove(url){
 				if(confirm("¬O§_­n§R°£?")){
 					$.get(url,function(data){
