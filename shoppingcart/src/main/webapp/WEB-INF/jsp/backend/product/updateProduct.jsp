@@ -26,7 +26,7 @@
 			<form id="pictureform" >	
 				<div>產品圖片<input type="file" id="${objProduct.ppicpath }" accept="image/gif, image/jpeg, image/png" name="file" ></div>
 				<div>
-					<image alt="" id="picturearea" height=100 width=150 src="">
+					<image alt="" id="picturearea" height=100 width=150 src="${objProduct.ppicpath }">
 					<input type="submit" value="上傳圖片">
 					<input type="hidden" id="picturepath">				
 				</div>		

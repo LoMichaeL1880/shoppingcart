@@ -49,7 +49,7 @@
                   <a class="nav-link active" href="#">Backend</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="http://localhost:8080/shoppingcart/shopping/index">Go to Shopping Cart</a>
+                  <a class="nav-link" href="http://10.10.1.74:8080/shoppingcart/shopping/index">Go to Shopping Cart</a>
                 </li>
             </ul>
         </div>
