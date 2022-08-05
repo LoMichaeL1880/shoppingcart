@@ -8,12 +8,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,21 +37,47 @@ public class BackendBannerService {
 	/* ------ Banner ------ */
 	
 	// query banner list
-	@RequestMapping(value="/banner", method=RequestMethod.GET)
-	public String backendBanner(ModelMap model) {
-		List<Banner> list = new daoBanner().queryAll();
-		model.addAttribute("bannerList", list);
-		return "backend/banner/banner";
-	}
-	
-	// PagedListHolder
 //	@RequestMapping(value="/banner", method=RequestMethod.GET)
 //	public String backendBanner(ModelMap model) {
 //		List<Banner> list = new daoBanner().queryAll();
 //		model.addAttribute("bannerList", list);
-//		return "backend/banner/banner2";
+//		return "backend/banner/banner";
 //	}
 	
+	// PagedListHolder
+	@RequestMapping(value="/banner", method=RequestMethod.GET)
+	public String backendBanner(ModelMap model) {
+		int start = 0;
+		int num = 3;
+		List<Banner> list = daoBanner.queryForPagination(start, num);
+		model.addAttribute("bannerList", list);
+		
+		List<Banner> listAll = new daoBanner().queryAll();
+		int count = listAll.size();
+		
+		int page = count/num;
+		if(count%num !=0) {
+			page = page+1;
+		}
+		model.addAttribute("pagenum", page);
+		
+		return "backend/banner/banner";
+	}
+	
+	// BootpagPanigation
+	@RequestMapping(value="/bannerpagination",method=RequestMethod.POST)
+	public String bootpagPagination(@RequestParam String pagenum, ModelMap model) {	
+		Integer num = Integer.parseInt(pagenum);
+		int pageofnum = 3;
+		int start = (num-1)*pageofnum;
+		List<Banner> bannerList = new daoBanner().queryForPagination(start, pageofnum);
+		for(Banner b : bannerList) {
+			System.out.println(b);
+		}
+		model.addAttribute("bannerList", bannerList);
+
+		return "backend/banner/responsebanner";
+	}
 	
 	/* --- insert banner ---*/
 	// insert banner

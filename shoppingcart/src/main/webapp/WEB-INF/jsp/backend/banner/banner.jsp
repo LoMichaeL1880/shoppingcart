@@ -6,6 +6,7 @@
 	<head>
 		<meta charset="BIG5">
 		<title>Insert title here</title>
+		<script src="../js/bootpag.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
@@ -42,11 +43,25 @@
 			</table>
 			<br>
 			<!-- pagnation -->
-			<div id="pagination"></div>
+			<div id="pagebootpag"></div>
 			
 		</div>
 		<script type="text/javascript">
-			
+			$(document).ready(function(){
+				$("#pagebootpag").bootpag({
+					total:${pagenum},
+					page:1
+				}).on("page",function(event,num){
+					$.ajax("bannerpagination",{
+						type:"post",
+						data:{"pagenum":num},
+						dataType:"html",
+						success:function(data,status){
+							$("#table-1").html(data);
+						}
+					});
+				});
+			});
 			function remove(url){
 				if(confirm("是否要刪除?")){
 					$.get(url,function(data){
